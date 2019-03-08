@@ -33,9 +33,10 @@ public class Resitors {
        colours[7] = "Violet";
        colours[8] = "Grey";
        colours[9] = "White";
-        String colour;
+        String colour, saved;
         String createdColour = "";
         String firstTwo = "";
+        int powerTen;
         colour= JOptionPane.showInputDialog("What is your resitor colour?.\n" 
                 + "Seperate each colour by Hyphens.\n"
                 + "Example: Red-Orange-Black");
@@ -43,33 +44,46 @@ public class Resitors {
         for (int i = 0; i < colour.length();){
             int end = i-1;
             if (end == -1){
-                System.out.println ("oops");
             }
             else {
                 if ("-".equals(colour.substring(end,i ))){
-            System.out.println(" SPACE! ");
             Collections.addAll (chosenColour, createdColour);
             createdColour = "";
             }
                 else {
                 createdColour += colour.substring (i-1,i);   
                 }
-            System.out.println ("ok");
             System.out.println (createdColour); 
         }
             i++;
         }
         createdColour += colour.substring (colour.length()-1,colour.length() );
         Collections.addAll (chosenColour, createdColour);
-       for (int i = 0; i < chosenColour.size();){
-           for (int x = 0; x <= colours.length;){
-               if (chosenColour.get(i) == colours.get(i)){  
-                
+                System.out.println (chosenColour);
+                int a =0; 
+        for (int i = 0; i < chosenColour.size();){
+       
+             for (int x = 0; x <= colours.length-1;){
+                  saved = colours[x];
+                  System.out.println ("i" + i);
+                  System.out.println ("x" + x);
+                  System.out.println (saved);
+                  System.out.println (chosenColour.get(i));
+                if (saved.equalsIgnoreCase(chosenColour.get(i)) && a <2){ 
+                firstTwo += x; 
+                a++;
+                System.out.println ("firstTwo" + firstTwo); 
+                System.out.println ("a" + a);
+                x = colours.length +1;
+            }   
+                else if (a == 2 && saved.equalsIgnoreCase(chosenColour.get(i))) {
+                 powerTen = x;   
+                 System.out.println (" powe" +powerTen);
+                }
+                x++;
             }
             i++;
-        }
     }
-        System.out.println (chosenColour);
         System.out.println ("You enterd:" +colour );
         System.out.println ("The value of the resitor is:" );
     }
